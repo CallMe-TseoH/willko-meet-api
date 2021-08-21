@@ -22,7 +22,6 @@ class EnterExitDataFactory extends Factory
     public function definition() : array
     {
         return [
-            "time"=>$this->faker->dateTime(),
             "isEnter"=>true,
             "presence_id"=>1
         ];
