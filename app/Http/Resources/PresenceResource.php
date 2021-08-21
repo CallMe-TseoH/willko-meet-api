@@ -17,7 +17,7 @@ class PresenceResource extends JsonResource
         return [
             "id"=>$this->id,
             "period"=>$this->period,
-            "data"=>EnterExitDataResource::collection($this->data())
+            "data"=>EnterExitDataResource::collection($this->data)
         ];
     }
 }
