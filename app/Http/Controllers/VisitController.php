@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\VisitResource;
 use App\Models\Visit;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class VisitController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return Collection|Visit[]
+     * @return AnonymousResourceCollection
      */
-    public function index()
+    public function index(): AnonymousResourceCollection
     {
-        return Visit::all();
+        return VisitResource::collection(Visit::all());
     }
 
     /**
@@ -33,11 +35,11 @@ class VisitController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Visit  $visit
-     * @return \Illuminate\Http\Response
+     * @return VisitResource
      */
-    public function show(Visit $visit)
+    public function show(Visit $visit): VisitResource
     {
-        //
+        return new VisitResource($visit);
     }
 
     /**
