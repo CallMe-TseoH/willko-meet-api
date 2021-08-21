@@ -15,6 +15,15 @@ class ParcelResource extends JsonResource
      */
     public function toArray($request): array
     {
-        return [parent::toArray($request)];
+        return [
+            "id"=> $this->id,
+                "type"=> $this->type,
+                "deliveryCompany"=> $this->deliveryCompany,
+                "number"=> $this->number,
+                "image"=> $this->image,
+                "receiveDateTime"=> $this->receiveDateTime,
+                "retrieveDateTime"=> $this->retrieveDateTime,
+                "retrieve"=> $this->retrieve,
+        ];
     }
 }

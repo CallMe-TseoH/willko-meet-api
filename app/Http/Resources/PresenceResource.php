@@ -14,6 +14,10 @@ class PresenceResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            "id"=>$this->id,
+            "period"=>$this->period,
+            "data"=>EnterExitDataResource::collection($this->data())
+        ];
     }
 }

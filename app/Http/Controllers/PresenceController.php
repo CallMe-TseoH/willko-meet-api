@@ -18,7 +18,7 @@ class PresenceController extends Controller
      */
     public function index(): AnonymousResourceCollection
     {
-        return PresenceResource::collection(Presence::all());
+        return PresenceResource::collection(Presence::where("archived", false)->get());
     }
 
     /**

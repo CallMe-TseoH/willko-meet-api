@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Parcel extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        "retrieveDateTime",
+                "retrieve",
+                "archived"
+    ];
+
+    protected $casts =[
+        "retrieve"=>"boolean",
+        "archived"=>"boolean"
+    ];
 }

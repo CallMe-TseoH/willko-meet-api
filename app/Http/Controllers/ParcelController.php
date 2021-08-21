@@ -17,7 +17,7 @@ class ParcelController extends Controller
      */
     public function index(): AnonymousResourceCollection
     {
-        return ParcelResource::collection(Parcel::all());
+        return ParcelResource::collection(Parcel::where("archived", false)->get());
     }
 
     /**
