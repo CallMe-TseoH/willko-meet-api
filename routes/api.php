@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\ExtendedUserController;
+use App\Http\Controllers\ParcelController;
+use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\VisitController;
+use App\Models\Meeting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +25,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResource("extendedUser", ExtendedUserController::class);
 
-Route::apiResource("visit", VisitController::class);
+Route::apiResource("visits", VisitController::class);
+
+Route::apiResource("meetings", Meeting::class);
+
+Route::apiResource("parcels", ParcelController::class);
+
+Route::apiResource("presences", PresenceController::class);
+
+

@@ -12,7 +12,7 @@ class VisitResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function toArray($request)
+    public function toArray($request): array
     {
         return [
             "id"=> $this->id,
@@ -31,6 +31,7 @@ class VisitResource extends JsonResource
         "appointmentIsEnded"=> $this->appointmentIsEnded,
         "appointmentStartedDate"=> $this->appointmentStartedDate,
         "appointmentEndedDate"=> $this->appointmentEndedDate,
+        "archived"=> $this->archived,
         ];
     }
 }

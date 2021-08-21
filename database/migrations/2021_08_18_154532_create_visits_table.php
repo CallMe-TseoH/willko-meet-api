@@ -32,6 +32,7 @@ class CreateVisitsTable extends Migration
             $table->dateTime("appointmentStartedDate")->nullable();
             $table->dateTime("appointmentEndedDate")->nullable();
             $table->foreignId("extended_user_id")->constrained()->onDelete("cascade");
+            $table->boolean("archived")->default(false);
             $table->timestamps();
         });
     }
