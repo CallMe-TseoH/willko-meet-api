@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ExtendedUserController;
+use App\Http\Controllers\VisitController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResource("extendedUser", ExtendedUserController::class);
+
+Route::apiResource("visit", VisitController::class);
