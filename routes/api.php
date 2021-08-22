@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\ExtendedUserController;
 use App\Http\Controllers\ParcelController;
 use App\Http\Controllers\PresenceController;
@@ -32,5 +33,7 @@ Route::apiResource("meetings", Meeting::class);
 Route::apiResource("parcels", ParcelController::class);
 
 Route::apiResource("presences", PresenceController::class);
+
+Route::apiResource("devices", DeviceController::class);
 
 

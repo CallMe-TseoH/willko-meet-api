@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\PresenceResource;
+use App\Models\Connexion;
 use App\Models\EnterExitData;
 use App\Models\Presence;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -29,14 +31,20 @@ class PresenceController extends Controller
      */
     public function store(Request $request): JsonResponse
     {
-        if(EnterExitData::create($request->all())){
+        if (EnterExitData::create($request->all())) {
+            $thisConnexion = Connexion::find(1);
+            $thisConnexion->update([
+                'isConnected' => $request->isEnter,
+                "lastConnexionDateTime" => $request->isEnter ? Carbon::now() : null,
+                "lastDisconnectionDateTime" => $request->isEnter ? null : Carbon::now()
+            ]);
             return response()->json([
-                "message" => $request-> isEnter? "Your entry has been saved.": "Your output has been recorded.",
+                "message" => $request->isEnter ? "Your entry has been saved." : "Your output has been recorded.",
                 "status" => true
             ], 200);
         } else {
             return response()->json([
-                "message" => $request-> isEnter? "Your entry has not been saved. An error has occurred.": "Your output has not been recorded. An error has occurred.",
+                "message" => $request->isEnter ? "Your entry has not been saved. An error has occurred." : "Your output has not been recorded. An error has occurred.",
                 "status" => false
 
             ], 200);

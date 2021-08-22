@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\ParcelResource;
-use App\Models\Parcel;
+use App\Http\Resources\DeviceResource;
+use App\Models\Device;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
-class ParcelController extends Controller
+class DeviceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class ParcelController extends Controller
      */
     public function index(): AnonymousResourceCollection
     {
-        return ParcelResource::collection(Parcel::where("archived", false)->get());
+        return DeviceResource::collection(Device::all());
     }
 
     /**
@@ -34,34 +34,33 @@ class ParcelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Parcel $parcel
-     * @return ParcelResource
+     * @param Device $device
+     * @return DeviceResource
      */
-    public function show(Parcel $parcel): ParcelResource
+    public function show(Device $device): DeviceResource
     {
-        return new ParcelResource($parcel);
+        return new DeviceResource($device);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param Parcel $parcel
+     * @param Device $device
      * @return JsonResponse
      */
-    public function update(Request $request, Parcel $parcel): JsonResponse
+    public function update(Request $request, Device $device): JsonResponse
     {
-        if($parcel->update($request->all())){
-            $parcel->refresh();
+        if($device->update($request->all())){
+            $device->refresh();
             return response()->json([
-                "message" => "The " .$parcel->type. " has been marked as recovered.",
+                "message" => "Settings has been updated.",
                 "status" => true
             ], 200);
-        } else {
+        }else{
             return response()->json([
-                "message" => "The " .$parcel->type.  " has not been marked as recovered. An error has occurred.",
-                "status" => false
-
+                "message" => "Settings has not been updated.",
+                "status" => true
             ], 200);
         }
     }
@@ -69,10 +68,10 @@ class ParcelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Parcel $parcel
+     * @param Device $device
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Parcel $parcel)
+    public function destroy(Device $device)
     {
         //
     }

@@ -8,7 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Connexion extends Model
 {
     use HasFactory;
-    protected $casts =[
-      "isConnected"=>"boolean"
+
+    protected $casts = [
+        "isConnected" => "boolean",
+        'lastConnexionDateTime' => "datetime",
+        'lastDisconnectionDateTime' => "datetime"
+    ];
+
+    protected $fillable = [
+        'isConnected',
+        'lastConnexionDateTime',
+        'lastDisconnectionDateTime'
     ];
 }
