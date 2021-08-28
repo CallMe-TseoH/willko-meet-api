@@ -62,7 +62,7 @@ class ParcelController extends Controller
                 "message" => "The " .$parcel->type.  " has not been marked as recovered. An error has occurred.",
                 "status" => false
 
-            ], 200);
+            ], 201);
         }
     }
 

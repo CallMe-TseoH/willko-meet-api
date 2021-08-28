@@ -16,7 +16,7 @@ class CreatePresencesTable extends Migration
         Schema::dropIfExists('presences');
         Schema::create('presences', function (Blueprint $table) {
             $table->id();
-            $table->char("period");
+            $table->boolean("isEnter")->default(false);
             $table->boolean("archived")->default(false);
             $table->foreignId("extended_user_id")->constrained()->onDelete("cascade");
             $table->timestamps();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ConnexionResource;
 use App\Http\Resources\PresenceResource;
 use App\Models\Connexion;
 use App\Models\EnterExitData;
@@ -20,7 +21,7 @@ class PresenceController extends Controller
      */
     public function index(): AnonymousResourceCollection
     {
-        return PresenceResource::collection(Presence::where("archived", false)->get());
+        return PresenceResource::collection(Presence::where("archived", false)->orderByDesc("created_at")->get());
     }
 
     /**
@@ -31,7 +32,7 @@ class PresenceController extends Controller
      */
     public function store(Request $request): JsonResponse
     {
-        if (EnterExitData::create($request->all())) {
+        if (Presence::create($request->all())) {
             $thisConnexion = Connexion::find(1);
             $thisConnexion->update([
                 'isConnected' => $request->isEnter,
@@ -40,14 +41,15 @@ class PresenceController extends Controller
             ]);
             return response()->json([
                 "message" => $request->isEnter ? "Your entry has been saved." : "Your output has been recorded.",
-                "status" => true
+                "status" => true,
+                new ConnexionResource($thisConnexion)
             ], 200);
         } else {
             return response()->json([
                 "message" => $request->isEnter ? "Your entry has not been saved. An error has occurred." : "Your output has not been recorded. An error has occurred.",
                 "status" => false
 
-            ], 200);
+            ], 201);
         }
     }
 

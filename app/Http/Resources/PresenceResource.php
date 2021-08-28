@@ -15,9 +15,9 @@ class PresenceResource extends JsonResource
     public function toArray($request)
     {
         return [
-            "id"=>$this->id,
-            "period"=>$this->period,
-            "data"=>EnterExitDataResource::collection($this->data)
-        ];
+            "id" => $this->id,
+            "time" => $this->created_at,
+            "isEnter" => $this->isEnter
+        ];;
     }
 }

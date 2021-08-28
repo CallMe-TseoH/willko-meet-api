@@ -10,8 +10,13 @@ class Presence extends Model
 {
     use HasFactory;
 
-    public function data():HasMany
-    {
-        return $this->hasMany(EnterExitData::class);
-    }
+    protected $fillable = [
+        "isEnter",
+        "extended_user_id"
+    ];
+
+    protected $casts =[
+        "created_at"=>"datetime",
+        "isEnter"=>"boolean"
+    ];
 }

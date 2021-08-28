@@ -37,10 +37,10 @@ class ExtendedUserController extends Controller
             Device::create($request->all());
             $userData->refresh();
 
-        }elseif(collect($userData->devices)->firstWhere("appId",$request->appId)==null){
+        }/*elseif(collect($userData->devices)->firstWhere("appId",$request->appId)==null){
             Device::create($request->all());
             $userData->refresh();
-        }
+        }*/
         return new ExtendedUserResource($userData);
     }
 

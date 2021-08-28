@@ -61,8 +61,7 @@ class VisitController extends Controller
             return response()->json([
                 "message" => "The visit has not been updated. An error has occurred.",
                 "status" => false
-
-            ], 200);
+            ], 201);
         }
     }
 

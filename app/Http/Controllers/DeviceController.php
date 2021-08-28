@@ -61,7 +61,7 @@ class DeviceController extends Controller
             return response()->json([
                 "message" => "Settings has not been updated.",
                 "status" => true
-            ], 200);
+            ], 201);
         }
     }
 
