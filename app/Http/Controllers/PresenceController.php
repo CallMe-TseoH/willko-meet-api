@@ -42,7 +42,7 @@ class PresenceController extends Controller
             return response()->json([
                 "message" => $request->isEnter ? "Your entry has been saved." : "Your output has been recorded.",
                 "status" => true,
-                new ConnexionResource($thisConnexion)
+               "connexion"=> new ConnexionResource($thisConnexion)
             ], 200);
         } else {
             return response()->json([
