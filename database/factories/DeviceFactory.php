@@ -26,7 +26,10 @@ class DeviceFactory extends Factory
             "appVersion"=>"1.0.5",
             "os"=>"android",
             "osVersion"=>"9.1",
-            "extended_user_id"=>1
+            "extended_user_id"=>1,
+        "pushNotificationState"=>true,
+        "emailNotificationState"=>true,
+        "smsNotificationState"=>false
         ];
     }
 }
