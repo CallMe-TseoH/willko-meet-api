@@ -20,9 +20,9 @@ class CreateDevicesTable extends Migration
             $table->char("appVersion")->nullable();
             $table->char("os")->nullable();
             $table->char("osVersion")->nullable();
-            $table->boolean("pushNotificationState")->default(true);
-            $table->boolean("emailNotificationState")->default(true);
-            $table->boolean("smsNotificationState")->default(true);
+            $table->boolean("pushNotificationState")->nullable;
+            $table->boolean("emailNotificationState")->nullable;
+            $table->boolean("smsNotificationState")->nullable;
             $table->foreignId("extended_user_id")->constrained()->onDelete("cascade");
             $table->timestamps();
         });
