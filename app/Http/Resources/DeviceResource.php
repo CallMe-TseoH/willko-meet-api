@@ -16,10 +16,10 @@ class DeviceResource extends JsonResource
     {
         return [
             "id" => $this->id,
-            "appId" => $this->appId,
-            "appVersion" => $this->appVersion,
-            "os" => $this->os,
-            "osVersion" => $this->osVersion,
+            "appId" => trim($this->appId),
+            "appVersion" => trim($this->appVersion),
+            "os" => trim($this->os),
+            "osVersion" => trim($this->osVersion),
             "pushNotificationState" => $this->pushNotificationState,
             "emailNotificationState" => $this->emailNotificationState,
             "smsNotificationState" => $this->smsNotificationState

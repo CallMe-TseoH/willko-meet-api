@@ -52,10 +52,10 @@ class DeviceController extends Controller
     public function update(Request $request, Device $device): JsonResponse
     {
         if($device->update($request->all())){
-            $device->refresh();
             return response()->json([
                 "message" => "Settings has been updated.",
-                "status" => true
+                "status" => true,
+                "device"=> new DeviceResource(Device::find(1))
             ], 200);
         }else{
             return response()->json([
