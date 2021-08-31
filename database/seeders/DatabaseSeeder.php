@@ -6,8 +6,11 @@ use App\Models\Company;
 use App\Models\Connexion;
 use App\Models\Device;
 use App\Models\ExtendedUser;
+use App\Models\Guest;
+use App\Models\Meeting;
 use App\Models\Parcel;
 use App\Models\Presence;
+use App\Models\Room;
 use App\Models\Visit;
 use Illuminate\Database\Seeder;
 
@@ -28,6 +31,9 @@ class DatabaseSeeder extends Seeder
                 Presence::factory(14)->create();
                 Visit::factory(16)->create();
                 Parcel::factory(13)->create();
+                Room::factory(1)->create();
+                Guest::factory(15)->create();
+                Meeting::factory(8)->create();
             }
         );
         // \App\Models\User::factory(10)->create();

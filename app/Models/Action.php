@@ -13,4 +13,5 @@ class Action extends Model
         'isEnabled' => 'boolean',
         'permission' => 'boolean'
     ];
+
 }

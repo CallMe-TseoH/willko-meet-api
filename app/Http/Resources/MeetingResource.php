@@ -12,8 +12,19 @@ class MeetingResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function toArray($request)
+    public function toArray($request): array
     {
-        return parent::toArray($request);
+        return [
+            "organizedBy"=>trim($this->organizedBy),
+            "meetingPurpose"=>trim($this->meetingPurpose),
+            "meetingPlace"=>trim($this->meetingPlace),
+            "description"=>trim($this->description),
+            "meetingDate"=>trim($this->meetingDate),
+            "meetingStartTime"=>trim($this->meetingStartTime),
+            "meetingEndTime"=>trim($this->meetingEndTime),
+            "hasStarted"=>$this->hasStarted,
+            "isEnded"=>$this->isEnded,
+            "guests"=> GuestResource::collection($this->guests),
+        ];
     }
 }

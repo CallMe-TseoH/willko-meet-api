@@ -9,7 +9,7 @@ class Visit extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+   /* protected $fillable = [
         "arrivalDate",
         "appointmentHasStarted",
         "appointmentIsEnded",
@@ -17,9 +17,11 @@ class Visit extends Model
         "appointmentEndedDate",
         "accepted",
         "archived"
-    ];
+    ];*/
+    protected $guarded = [];
 
     protected $casts = [
+        "hasAppointment"=>"boolean",
         "accepted"=>"boolean",
         "appointmentIsEnded"=>"boolean",
         "appointmentHasStarted"=>"boolean",

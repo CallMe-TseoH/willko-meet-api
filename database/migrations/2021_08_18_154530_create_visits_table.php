@@ -18,12 +18,12 @@ class CreateVisitsTable extends Migration
             $table->id();
             $table->string("firstName");
             $table->string("lastName");
-            $table->string("image");
-            $table->string("email")->unique();
-            $table->string("tel")->unique();
-            $table->boolean("accepted")->default(false);
+            $table->string("image")->nullable();
+            $table->string("email");
+            $table->string("tel")->nullable();
+            $table->boolean("accepted")->nullable();
             $table->string("reason");
-            $table->string("company");
+            $table->string("company")->nullable();
             $table->boolean("hasAppointment")->default(true);
             $table->dateTime("appointmentDate")->nullable();
             $table->dateTime("arrivalDate")->nullable();

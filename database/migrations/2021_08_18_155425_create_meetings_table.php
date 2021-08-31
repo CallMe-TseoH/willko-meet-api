@@ -18,10 +18,14 @@ class CreateMeetingsTable extends Migration
             $table->id();
             $table->string("organizedBy");
             $table->string("meetingPurpose");
+            $table->string("meetingPlace");
+            $table->string("description");
             $table->date("meetingDate");
+            $table->boolean("hasStarted")->default(false);
+            $table->boolean("isEnded")->default(false);
             $table->time("meetingStartTime");
             $table->time("meetingEndTime");
-            $table->string("meetingPlace");
+            $table->foreignId("room_id")->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

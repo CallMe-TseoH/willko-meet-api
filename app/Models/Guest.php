@@ -14,4 +14,8 @@ class Guest extends Model
     {
         return $this->belongsToMany(Meeting::class);
     }
+
+    protected $casts = [
+      "isAnIntern"=>"boolean"
+    ];
 }

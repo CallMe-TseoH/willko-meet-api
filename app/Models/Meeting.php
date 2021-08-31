@@ -14,8 +14,16 @@ class Meeting extends Model
     {
         return $this->belongsToMany(ExtendedUser::class);
     }
-    public function guests(): HasMany
+    public function guests(): BelongsToMany
     {
-        return $this->hasMany(Guest::class);
+        return $this->belongsToMany(Guest::class);
     }
+
+    protected $guarded =[];
+
+    protected $casts = [
+        "meetingDate"=>"datetime",
+        "hasStarted"=>"boolean",
+        "isEnded"=>"boolean"
+    ];
 }

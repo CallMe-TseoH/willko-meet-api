@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\ExtendedUserController;
+use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\ParcelController;
 use App\Http\Controllers\PresenceController;
+use App\Http\Controllers\RoomController;
 use App\Http\Controllers\VisitController;
 use App\Models\Meeting;
 use Illuminate\Http\Request;
@@ -28,12 +30,14 @@ Route::apiResource("extendedUser", ExtendedUserController::class);
 
 Route::apiResource("visits", VisitController::class);
 
-Route::apiResource("meetings", Meeting::class);
+Route::apiResource("meetings", MeetingController::class);
 
 Route::apiResource("parcels", ParcelController::class);
 
 Route::apiResource("presences", PresenceController::class);
 
 Route::apiResource("devices", DeviceController::class);
+
+Route::apiResource('rooms', RoomController::class);
 
 

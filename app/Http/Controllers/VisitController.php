@@ -25,11 +25,23 @@ class VisitController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
-        //
+        $newVisit = Visit::create($request->all());
+        if($newVisit){
+            return response()->json([
+                "message" => "The visit has been created.",
+                "status" => true,
+                "visitor"=> new VisitResource(Visit::find($newVisit->id))
+            ], 200);
+        }else{
+            return  response()->json([
+                "message" => "The visit has not been created.",
+                "status" => false,
+            ], 201);
+        }
     }
 
     /**

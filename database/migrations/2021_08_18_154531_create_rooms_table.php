@@ -3,8 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Ramsey\Uuid\Uuid;
 
-class CreateGuestsTable extends Migration
+class CreateRoomsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +14,14 @@ class CreateGuestsTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists("guests");
-        Schema::create('guests', function (Blueprint $table) {
+        Schema::dropIfExists("rooms");
+        Schema::create('rooms', function (Blueprint $table) {
             $table->id();
+            $table->uuid("uuid")->default(Uuid::uuid4())->unique();
+            $table->char("code")->unique();
             $table->string("name");
             $table->string("image");
-            $table->boolean("isAnIntern")->default(true);
+            $table->integer("state");
             $table->timestamps();
         });
     }
@@ -30,6 +33,6 @@ class CreateGuestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('guests');
+        Schema::dropIfExists('rooms');
     }
 }

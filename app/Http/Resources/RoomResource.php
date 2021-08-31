@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ActionResource extends JsonResource
+class RoomResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,9 +15,11 @@ class ActionResource extends JsonResource
     public function toArray($request): array
     {
         return [
-            "key" => trim($this->key),
-            "isEnabled" => $this->isEnabled,
-            "permission" => true
+            "id" => trim($this->uuid),
+            "name" => trim($this->name),
+            "image" => trim($this->image),
+            "state" => $this->state,
+            "meetings"=> MeetingResource::collection($this->meetings)
         ];
     }
 }
