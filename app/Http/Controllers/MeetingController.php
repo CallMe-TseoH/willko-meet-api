@@ -33,7 +33,7 @@ class MeetingController extends Controller
         if($meeting != null){
             $json = json_decode($request->guests);
             foreach ($json as $guest){
-                $meeting->guests()->attach($guest);
+                Meeting::find($meeting->id)->guests()->attach($guest);
             }
             return response()->json([
                 "message"=>"Meeting has been created.",
