@@ -67,7 +67,7 @@ class RoomController extends Controller
     {
         $updated = $room->update($request->all());
         if($updated){
-            $roomUpdated = Room::firstWhere("uuid", $room->id);
+            $roomUpdated = Room::firstWhere("code", $room->code);
             return response()->json([
                 "message"=>"This room has been updated.",
                 "status"=>true,

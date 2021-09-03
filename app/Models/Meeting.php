@@ -10,20 +10,34 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Meeting extends Model
 {
     use HasFactory;
-    public function users() :BelongsToMany
+
+    public function users(): BelongsToMany
     {
         return $this->belongsToMany(ExtendedUser::class);
     }
+
     public function guests(): BelongsToMany
     {
         return $this->belongsToMany(Guest::class);
     }
 
-    protected $guarded =[];
+    protected $fillable = [
+        "room_id",
+        "organizedBy",
+        "meetingPurpose",
+        "meetingPlace",
+        "description",
+        "meetingDate",
+        "meetingStartTime",
+        "meetingEndTime",
+        "hasStarted",
+        "isEnded"
+    ];
 
     protected $casts = [
-        "meetingDate"=>"datetime",
-        "hasStarted"=>"boolean",
-        "isEnded"=>"boolean"
+        "meetingDate" => "datetime",
+        "hasStarted" => "boolean",
+        "isEnded" => "boolean",
+
     ];
 }

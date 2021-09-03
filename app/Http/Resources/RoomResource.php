@@ -15,7 +15,8 @@ class RoomResource extends JsonResource
     public function toArray($request): array
     {
         return [
-            "id" => trim($this->uuid),
+            "id" => trim($this->id),
+            "uuid" => trim($this->uuid),
             "name" => trim($this->name),
             "image" => trim($this->image),
             "state" => $this->state,

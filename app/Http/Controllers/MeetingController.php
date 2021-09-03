@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\MeetingResource;
 use App\Models\Meeting;
+use App\Models\Room;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
@@ -22,12 +24,28 @@ class MeetingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return JsonResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
-        //
+        $meeting = Meeting::create($request->all());
+        if($meeting != null){
+            $json = json_decode($request->guests);
+            foreach ($json as $guest){
+                $meeting->guests()->attach($guest);
+            }
+            return response()->json([
+                "message"=>"Meeting has been created.",
+            "status"=>true,
+                "meeting"=> new MeetingResource($meeting)
+            ], 200);
+        } else{
+            return response()->json([
+                "message"=>"Meeting has been created.",
+                "status"=>false,
+            ], 201);
+        }
     }
 
     /**
@@ -44,13 +62,25 @@ class MeetingController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param Meeting $meeting
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function update(Request $request, Meeting $meeting)
+    public function update(Request $request, Meeting $meeting): JsonResponse
     {
-        //
+        if($meeting->update($request->all())){
+            return response()->json([
+                "message"=>"Meeting has been updated.",
+                "status"=>true,
+                "meeting"=> new MeetingResource(Meeting::find($request->id))
+            ], 200);
+        } else{
+            return response()->json([
+                "message"=>"Meeting has not been updated.",
+                "status"=>false,
+            ], 201);
+        }
+
     }
 
     /**

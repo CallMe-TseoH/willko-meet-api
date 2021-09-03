@@ -15,6 +15,7 @@ class MeetingResource extends JsonResource
     public function toArray($request): array
     {
         return [
+            "id"=>trim($this->id),
             "organizedBy"=>trim($this->organizedBy),
             "meetingPurpose"=>trim($this->meetingPurpose),
             "meetingPlace"=>trim($this->meetingPlace),
