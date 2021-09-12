@@ -20,10 +20,12 @@ class MeetingFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             "room_id" => 1,
+            "uuid" => $this->faker->uuid,
+            "code" => str_pad(mt_rand(0, 9999), 4, strval(rand(0,9)), STR_PAD_LEFT),
             "organizedBy" => $this->faker->name,
             "meetingPurpose" => $this->faker->sentence(),
             "meetingPlace" => $this->faker->city,

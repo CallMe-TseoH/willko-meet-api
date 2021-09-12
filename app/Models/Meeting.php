@@ -23,6 +23,7 @@ class Meeting extends Model
 
     protected $fillable = [
         "room_id",
+        "code",
         "organizedBy",
         "meetingPurpose",
         "meetingPlace",

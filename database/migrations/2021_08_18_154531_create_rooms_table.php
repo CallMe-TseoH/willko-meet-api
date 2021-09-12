@@ -20,6 +20,7 @@ class CreateRoomsTable extends Migration
             $table->uuid("uuid")->default(Uuid::uuid4())->unique();
             $table->char("code")->unique();
             $table->string("name");
+            $table->boolean("autoStartMeeting")->default(false);
             $table->string("image");
             $table->integer("state");
             $table->timestamps();

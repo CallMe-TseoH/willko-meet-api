@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Ramsey\Uuid\Uuid;
 
 class CreateMeetingsTable extends Migration
 {
@@ -17,8 +18,10 @@ class CreateMeetingsTable extends Migration
         Schema::create('meetings', function (Blueprint $table) {
             $table->id();
             $table->string("organizedBy");
+            $table->uuid("uuid")->default(Uuid::uuid4())->unique();
+            $table->char("code");
             $table->string("meetingPurpose");
-            $table->string("meetingPlace");
+            $table->string("meetingPlace")->nullable();
             $table->string("description");
             $table->date("meetingDate");
             $table->boolean("hasStarted")->default(false);

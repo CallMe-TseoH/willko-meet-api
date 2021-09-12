@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Http\Resources\MeetingResource;
+use App\Http\Resources\ProtectedMeetingResource;
 use App\Models\Meeting;
 use App\Models\Room;
 use Illuminate\Http\JsonResponse;
@@ -18,7 +18,7 @@ class MeetingController extends Controller
      */
     public function index(): AnonymousResourceCollection
     {
-        return MeetingResource::collection(Meeting::all());
+        return ProtectedMeetingResource::collection(Meeting::all());
     }
 
     /**
@@ -33,7 +33,7 @@ class MeetingController extends Controller
         if($meeting != null){
             $json = json_decode($request->guests);
             foreach ($json as $guest){
-                Meeting::find($meeting->id)->guests()->attach($guest);
+                $meeting->id->guests()->attach($guest);
             }
             return response()->json([
                 "message"=>"Meeting has been created.",
@@ -87,10 +87,20 @@ class MeetingController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Meeting $meeting
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function destroy(Meeting $meeting)
+    public function destroy(Meeting $meeting): JsonResponse
     {
-        //
+        if($meeting->delete()){
+            return response()->json([
+                "message"=>"Meeting has been deleted.",
+                "status"=>true,
+            ], 200);
+        } else{
+            return response()->json([
+                "message"=>"Meeting has not been deleted.",
+                "status"=>false,
+            ], 201);
+        }
     }
 }

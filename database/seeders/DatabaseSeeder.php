@@ -28,7 +28,6 @@ class DatabaseSeeder extends Seeder
                 Company::factory(1)->create();
                 Connexion::factory(1)->create();
                 Device::factory(1)->create();
-                Presence::factory(14)->create();
                 Visit::factory(16)->create();
                 Parcel::factory(13)->create();
                 Room::factory(1)->create();

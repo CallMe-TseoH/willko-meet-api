@@ -19,6 +19,11 @@ class Room extends Model
         "code",
         "name",
         "image",
-        "state"
+        "state",
+        "autoStartMeeting"
+    ];
+
+    protected $casts =[
+        "autoStartMeeting"=>"boolean"
     ];
 }

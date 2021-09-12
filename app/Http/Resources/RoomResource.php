@@ -19,6 +19,7 @@ class RoomResource extends JsonResource
             "uuid" => trim($this->uuid),
             "name" => trim($this->name),
             "image" => trim($this->image),
+            "autoStartMeeting" => trim($this->autoStartMeeting),
             "state" => $this->state,
             "meetings"=> MeetingResource::collection($this->meetings)
         ];
