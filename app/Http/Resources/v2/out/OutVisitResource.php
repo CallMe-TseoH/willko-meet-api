@@ -17,6 +17,7 @@ class OutVisitResource extends JsonResource
     {
         $appointmentDate = $this->visit_date." ".Utils::toOrgTimeOnly($this->start_date_time).":00";
         $appointmentEnded = $this->end_date != null? $this->visit_date." ".Utils::toOrgTimeOnly($this->end_date_time).":00":null;
+        $appointmentHasStarted = ($this->visitStatus->id > 3 && $this->VisitEtats->id<2);
         return [
         "id"=> $this->id,
         "firstName"=> $this->visitor->firstname,
@@ -24,15 +25,15 @@ class OutVisitResource extends JsonResource
         "image"=> $this->visitor->img_profile,
         "email"=> $this->visitor->email,
         "tel"=> $this->visitor->phone_code.$this->visitor->phone_number,
-        "accepted"=> str_contains($this->VisitEtats->label, "Accepted"),
+        "accepted"=> ($this->VisitEtats->id!=3 && $this->VisitEtats->id!=4),
         "reason"=> $this->reason->label,
         "company"=> $this->visitor->organisation_name,
         "hasAppointment"=> $this->hasAppointment??true,
         "appointmentDate"=> $appointmentDate,
-        "arrivalDate"=> $this->arrivalDate,
-        "appointmentHasStarted"=> $this->appointmentHasStarted,
-        "appointmentIsEnded"=> $appointmentEnded!=null,
-        "appointmentStartedDate"=> $this->appointmentStartedDate,
+        "arrivalDate"=> $this->arrivalDate??null,
+        "appointmentHasStarted"=> $appointmentHasStarted??false,
+        "appointmentIsEnded"=> false,
+        "appointmentStartedDate"=> $this->appointmentStartedDate??$appointmentDate,
         "appointmentEndedDate"=> $appointmentEnded,
         "archived"=> $this->archived??false,
         ];

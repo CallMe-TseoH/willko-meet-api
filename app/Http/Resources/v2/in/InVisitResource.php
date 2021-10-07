@@ -21,7 +21,7 @@ class InVisitResource extends JsonResource
         "staff_id"=> $this->id,
         "firstname"=> $this->firstName,
         "lastname"=> $this->lastName,
-        "image"=> $this->image,
+//        "image"=> $this->image,
         "email"=> $this->email,
         "phone_code"=> $this->telCode,
         "phone_number"=> $this->tel,
@@ -31,15 +31,7 @@ class InVisitResource extends JsonResource
         "enddate"=> $this->appointmentEndedDate? Carbon::parse($this->appointmentEndedDate)->format("Y-m-d"):null,
         "endtime"=> $this->appointmentEndedDate? Carbon::parse($this->appointmentEndedDate)->format("H:i"):null,
         "send_email"=> true,
-        "accepted"=> $this->accepted,
-        "company"=> $this->company,
-        "hasAppointment"=> $this->hasAppointment,
-        "arrivalDate"=> $this->arrivalDate,
-        "appointmentHasStarted"=> $this->appointmentHasStarted,
-        "appointmentIsEnded"=> $this->appointmentIsEnded,
-        "appointmentStartedDate"=> $this->appointmentStartedDate,
-        "appointmentEndedDate"=> $this->appointmentEndedDate,
-        "archived"=> $this->archived,
+        "several"=> true,
         ];
     }
 }
