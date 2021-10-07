@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\ConnexionResource;
-use App\Http\Resources\PresenceResource;
+use App\Http\Resources\v2\in\v2\out\ConnexionResource;
+use App\Http\Resources\v2\in\v2\out\PresenceResource;
 use App\Models\Connexion;
 use App\Models\EnterExitData;
 use App\Models\Presence;

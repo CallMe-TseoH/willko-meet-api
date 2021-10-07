@@ -17,6 +17,7 @@ class ExtendedUserResource extends JsonResource
     {
         return [
             "id" => $this->uuid,
+            "idForUpdate" => $this->id,
             "gender" => $this->gender,
             "firstname" => $this->firstname,
             "lastname" => $this->lastname,

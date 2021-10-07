@@ -44,4 +44,17 @@ class ExtendedUser extends Model
     {
         return $this->hasMany(Parcel::class);
     }
+    
+      protected $fillable = [
+        "firstname",
+        "lastname",
+        "middlename",
+        "email",
+        "picture",
+        "tel",
+        "company",
+        "service",
+        "position",
+        "office"
+    ];
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\ParcelResource;
+use App\Http\Resources\v2\in\v2\out\ParcelResource;
 use App\Models\Parcel;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

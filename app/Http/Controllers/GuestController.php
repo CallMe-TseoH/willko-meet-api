@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\GuestResource;
+use App\Http\Resources\v2\in\v2\out\GuestResource;
 use App\Models\Guest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;

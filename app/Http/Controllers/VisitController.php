@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\VisitResource;
+use App\Http\Resources\v2\in\v2\out\VisitResource;
 use App\Models\Visit;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
