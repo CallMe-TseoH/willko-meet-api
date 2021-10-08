@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\v2\in\v2\out\ExtendedUserResource;
+use App\Http\Resources\ExtendedUserResource;
 use App\Models\Connexion;
 use App\Models\Device;
 use App\Models\ExtendedUser;

@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Resources\v2\in\v2\out\MeetingResource;
-use App\Http\Resources\v2\in\v2\out\ProtectedMeetingResource;
+use App\Http\Resources\MeetingResource;
+use App\Http\Resources\ProtectedMeetingResource;
 use App\Models\Meeting;
 use App\Models\Room;
 use Illuminate\Http\JsonResponse;

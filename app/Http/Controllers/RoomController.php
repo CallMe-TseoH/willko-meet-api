@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\v2\in\v2\out\ProtectedRoomResource;
-use App\Http\Resources\v2\in\v2\out\RoomResource;
+use App\Http\Resources\ProtectedRoomResource;
+use App\Http\Resources\RoomResource;
 use App\Models\Room;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
